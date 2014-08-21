@@ -1,0 +1,20 @@
+{
+    "name": "conference",
+    "version": "0.0.1",
+    "description": "Some description of conference",
+    "author": {
+        "name": "Quentin HUET"
+    },
+    "mean": "0.3.3",
+    "engines": {
+        "node": "0.10.x",
+        "npm": "1.4.x"
+    },
+    "dependencies": {
+        "socket.io": "~1.0.4",
+        "express": "~4.4.3",
+        "body-parser": "^1.2.0"
+
+    },
+    "license": "MIT"
+}

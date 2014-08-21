@@ -1,0 +1,33 @@
+<div style='margin-top: 70px' class="" data-ng-controller="ConferenceController as conference">
+        <div style=" margin-left:10px;top:99px; width:70%;padding:5px;margin-top:25px;background-color:rgba(242,242,242,0.5);border-radius:10px" class="room-controls">
+            <button class="create-room btn btn-default btn-sm" id="{{getRandom()}}">Open NEW Room</button>
+            <input  style="height:33px;"  type="text" name="country" value="{{getRandom()}}" readonly>
+            <button class="join-room btn btn-default btn-sm" >Join Room</button>
+            <input  style="height:33px;" id="room-id" type="text" />
+            <button ng-show='myuser.isPresenter' ng-click="conference.startSharingScreen()" class="start-screensharing btn btn-default btn-sm">Start</button>
+        </div>
+
+        <div class="local-video-container" style="position:fixed;bottom: 20px;left:130px;z-index: 999;">
+            <video ng-class="{ 'active' : myuser.stream }" style="width:300px" ng-src="{{myuser.stream}}" autoplay muted=true volume=0></video>
+
+        </div>
+
+        <div style="width:80%;float:left;min-height:1px;padding:10px" class="screen-container container">
+            <video style="width:100%;border-width:3px;border-style:solid;border-color:#2d2d2d;" ng-show="screen" ng-src="{{screen.stream}}" autoplay></video>
+        </div>
+
+        <div style="width:20%;height:100%;position:fixed;float:left;right:0;top:60px;overflow-y:scroll; background-color:rgba(242,242,242,0.5);" class="videos-container container">
+
+            <div style="vertical-align:bottom;margin:15px 0 25px 0" ng-repeat="user in users">
+                <button style='position: absolute;' ng-show="myuser.isPresenter" class="switch-presenter" ng-click="conference.switchPresenter(user.id)" >set as presenter</button>
+                <video ng-class="{ 'active' : user.stream }" style="width:90%" ng-src="{{user.stream}}" autoplay></video>
+                <div style='background-color: black; opacity: 0.6; width: 90%; float: left; margin-top: -5px;'>
+                    <span style='float: right; font-size: 1em; color:#E1E1E1; font-variant: small-caps; padding-right: 5px;' ng-show="user.isPresenter"><i class='glyphicon glyphicon-expand'></i> presenting</span>
+                    <span style='float: left; font-size: 1em;color:#E1E1E1; font-variant: small-caps; padding-left: 5px;'>{{user.username}}</span>
+                </div>
+            </div>
+        </div>
+</div>
+<script src="//cdn.webrtc-experiment.com/RTCMultiConnection-v2.0.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+
