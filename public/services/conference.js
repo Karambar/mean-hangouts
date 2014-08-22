@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('mean.conference').factory('Conference', ['Global', '$window', '$sce', function (Global, $window, $sce) {
+angular.module('mean.mean-hangouts').factory('Conference', ['Global', '$window', '$sce', function (Global, $window, $sce) {
         var self = this;
-        var SIGNALING_SERVER = '/',
+        var SIGNALING_SERVER = ':8282/',
             defaultChannel = 'default-channel';
         self.socket = null;
         var connection = new RTCMultiConnection(defaultChannel);

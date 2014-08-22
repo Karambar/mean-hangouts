@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.conference').controller('ConferenceController', ['$scope', 'Global', 'Conference',
+angular.module('mean.mean-hangouts').controller('ConferenceController', ['$scope', 'Global', 'Conference',
     function($scope, Global, Conference) {
         $scope.global = Global;
         $scope.package = {

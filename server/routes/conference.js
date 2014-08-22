@@ -4,22 +4,22 @@
 module.exports = function(Conference, app, auth, database) {
     var PORT            = 8282;
     var appPath         = process.cwd();
-    var config          = require(appPath + '/server/config/config');
+    //var config          = require(appPath + '/server/config/config');
     var express         = require('express');
-    var https           = require('https');
+  //  var https           = require('https');
     var socketApp       = express();
     
-    var server          = null;
-    if (config.key){
-        server      = https.createServer({key: config.key, cert: config.cert}, socketApp);
-    }else{
-        server      = require('http').createServer(socketApp);
-    }
+    // server          = null;
+    //if (config.key){
+   //     server      = https.createServer({key: config.key, cert: config.cert}, socketApp);
+   // }else{
+    var    server      = require('http').createServer(socketApp);
+   // }
 
     var io              = require('socket.io').listen(server);
 
     server.listen(PORT, function() {
-        console.log('Chat now listening on port: ' + PORT + '\n');
+        console.log('Socket.io now listening on port: ' + PORT + '\n');
     });
 
     var allowCrossDomain = function(req, res, next) {

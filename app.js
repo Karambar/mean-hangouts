@@ -5,7 +5,7 @@
  */
 var Module = require('meanio').Module;
 
-var Conference = new Module('conference');
+var Conference = new Module('mean-hangouts');
 
 /*
  * All MEAN packages require registration
@@ -24,27 +24,11 @@ Conference.register(function(app, auth, database) {
         menu: 'main'
     });
 
-    /**
-    //Uncomment to use. Requires meanio@0.3.7 or above
-    // Save settings with callback
-    // Use this for saving data from administration pages
-    Conference.settings({
-        'someSetting': 'some value'
-    }, function(err, settings) {
-        //you now have the settings object
+    var socket = require('socket.io-client')('http://localhost:8282');
+    socket.on('connect', function(){
+        socket.on('event', function(data){});
+        socket.on('disconnect', function(){});
     });
-
-    // Another save settings example this time with no callback
-    // This writes over the last settings.
-    Conference.settings({
-        'anotherSettings': 'some value'
-    });
-
-    // Get settings. Retrieves latest saved settigns
-    Conference.settings(function(err, settings) {
-        //you now have the settings object
-    });
-    */
 
     Conference.settings({
         'funcPage': '../controllers/sockets',

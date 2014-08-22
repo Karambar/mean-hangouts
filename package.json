@@ -1,7 +1,7 @@
 {
-    "name": "conference",
+    "name": "mean-hangouts",
     "version": "0.0.1",
-    "description": "Some description of conference",
+    "description": "Mean package to create a hangouts like application with webrtc and socketio",
     "author": {
         "name": "Quentin HUET"
     },
@@ -11,10 +11,13 @@
         "npm": "1.4.x"
     },
     "dependencies": {
+        "redis": "~0.10.3",
         "socket.io": "~1.0.4",
+        "socket.io-client":"*",
+        "moment": "~2.7.0",
         "express": "~4.4.3",
-        "body-parser": "^1.2.0"
-
+        "body-parser": "~1.3.1",
+        "q": "~1.0.1"
     },
     "license": "MIT"
 }
